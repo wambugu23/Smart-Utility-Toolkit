@@ -31,6 +31,8 @@ import androidx.navigation.NavController
 import com.smartutility.ui.Screen
 import com.smartutility.ui.theme.*
 import kotlinx.coroutines.delay
+import com.smartutility.ui.theme.AccentPurple
+import androidx.compose.material.icons.filled.CheckCircle
 
 // ── Data model for each tool card ────────────────────────────────────────────
 data class ToolItem(
@@ -69,6 +71,14 @@ fun HomeScreen(navController: NavController) {
             accent   = AccentAmber,
             tag      = "TIMER",
             route    = Screen.Stopwatch.route
+        ),
+        ToolItem(
+            title    = "Task Manager",
+            subtitle = "Create · Complete · Track tasks",
+            icon     = Icons.Default.CheckCircle,
+            accent   = AccentPurple,
+            tag      = "TASKS",
+            route    = Screen.Tasks.route
         )
     )
 

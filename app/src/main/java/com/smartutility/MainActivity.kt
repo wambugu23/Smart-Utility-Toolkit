@@ -12,11 +12,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.smartutility.ui.Screen
-import com.smartutility.ui.home.HomeScreen
-import com.smartutility.ui.theme.SmartUtilityTheme
 import com.smartutility.ui.converter.ConverterScreen
 import com.smartutility.ui.currency.CurrencyScreen
+import com.smartutility.ui.home.HomeScreen
 import com.smartutility.ui.stopwatch.StopwatchScreen
+import com.smartutility.ui.tasks.TaskScreen
+import com.smartutility.ui.theme.SmartUtilityTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,27 +27,27 @@ class MainActivity : ComponentActivity() {
             SmartUtilityTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color    = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
                     NavHost(
-                        navController = navController,
+                        navController    = navController,
                         startDestination = Screen.Home.route
                     ) {
                         composable(Screen.Home.route) {
                             HomeScreen(navController = navController)
                         }
-                        // We'll add Converter, Currency, Stopwatch in later steps
-                        composable(Screen.Stopwatch.route) {
-                            StopwatchScreen(navController = navController)
+                        composable(Screen.Converter.route) {
+                            ConverterScreen(navController = navController)
                         }
                         composable(Screen.Currency.route) {
                             CurrencyScreen(navController = navController)
                         }
-                        composable(Screen.Converter.route) {
-                            ConverterScreen(navController = navController)
-
-
+                        composable(Screen.Stopwatch.route) {
+                            StopwatchScreen(navController = navController)
+                        }
+                        composable(Screen.Tasks.route) {
+                            TaskScreen(navController = navController)
                         }
                     }
                 }
